@@ -16,3 +16,7 @@ Mouse Estrous Cycle Estimation
 #### diestrus stage (D): 98.2% 
 #### estrus stage (E): 97.9% 
 #### proestrus stage (P): 96.2%
+
+## Weight parameter
+please download the model weight from here
+http://---------------------------
