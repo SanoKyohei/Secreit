@@ -1,6 +1,5 @@
 from keras import models
 from keras import layers
-import h5py
 import pickle
 from keras.applications import VGG16
 from keras import optimizers
