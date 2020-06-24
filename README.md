@@ -11,7 +11,7 @@ Mouse Estrous Cycle Estimation
 ## Overview
 ![Overview](https://github.com/SanoKyohei/Secreit/blob/master/Example/Overview.png)  
 
-## Performance(AUC)
+## Model AUC (Performance)
 #### SECREIT correctly classified competitive to two professionals
 #### diestrus stage (D): 0.982 
 #### estrus stage (E): 0.979
