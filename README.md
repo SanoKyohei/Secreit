@@ -13,9 +13,9 @@ Mouse Estrous Cycle Estimation
 
 ## Performance(AUC)
 #### SECREIT correctly classified competitive to two professionals
-#### diestrus stage (D): 98.2% 
-#### estrus stage (E): 97.9% 
-#### proestrus stage (P): 96.2%
+#### diestrus stage (D): 0.982 
+#### estrus stage (E): 0.979
+#### proestrus stage (P): 0.962
 
 ## Weight parameter
 please download the model weight from here
