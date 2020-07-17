@@ -18,5 +18,5 @@ Mouse Estrous Cycle Estimation
 #### proestrus stage (P): 0.962
 
 ## Weight parameter
-please download the model weight from here
-http://---------------------------
+This will be published soon.
+
