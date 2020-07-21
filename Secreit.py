@@ -70,9 +70,7 @@ def vgg_model(weight_path, input_shape=(240,320,3), input_tensor=None, pooling=N
     # Create model.
     model=Model(img_input, x, name='seq')
     # load weights
-    weight = open(weight_path,"rb")
-    weight = pickle.load(weight)
-    model.set_weights(weight)
+    model.load_weights(weight_path)
     return model
 
 
