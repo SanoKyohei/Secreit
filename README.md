@@ -1,4 +1,3 @@
-# Original paper 
 # Deep learning-based classification of the mouse estrous cycle stages, K. Sano and etal, 2020, Scientific Reports.
 https://www.nature.com/articles/s41598-020-68611-0
 
