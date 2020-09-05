@@ -24,21 +24,20 @@ Mouse Estrous Cycle Estimation
 https://opac.ll.chiba-u.jp/da/curator/108041/weights.hdf5
 
 ## Dataset
-#### Example of file name
-<br> "D_a_14_e1_Auto2_train.png" <br>
+### Example of file name
+ "D_a_14_e1_Auto2_train.png" 
 <br> D: Estrous Cycle stage <br>
 <br> a_14_e1: image id <br>
 Auto2: Name of Experiment. Auto2 and Auto3 was used for trainig. Auto1 is for validation and Auto4 is for test. /n
-#### Estrous Cycle D stage:
-<br> https://opac.ll.chiba-u.jp/da/curator/108041/D_part1.zip   <br>
+### Estrous Cycle D stage:
+ https://opac.ll.chiba-u.jp/da/curator/108041/D_part1.zip   
 <br> https://opac.ll.chiba-u.jp/da/curator/108041/D_part2.zip   <br>
 <br> https://opac.ll.chiba-u.jp/da/curator/108041/D_part3.zip   <br>
 
 #### Estrous Cycle E stage:
-<br> https://opac.ll.chiba-u.jp/da/curator/108041/E.zip    <br>
-
+ https://opac.ll.chiba-u.jp/da/curator/108041/E.zip    
 #### Estrous Cycle P stage:
-<br> https://opac.ll.chiba-u.jp/da/curator/108041/P.zip  <br>
+https://opac.ll.chiba-u.jp/da/curator/108041/P.zip 
 
 
 
