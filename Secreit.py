@@ -13,7 +13,9 @@ from keras.layers import Input
 from keras.layers import Conv2D
 from keras.layers import MaxPooling2D
 from keras import backend as K
+from keras.preprocessing.image import ImageDataGenerator
 import cv2
+import random
 
 def softmax(x):
     exp_x = np.exp(x)
@@ -131,3 +133,124 @@ def Cam(img,stage, seq3):
     heatmap = cv2.applyColorMap(heatmap, cv2.COLORMAP_JET)
     superimposed_img = heatmap * 0.4 + img
     return superimposed_img
+
+class TrainGenerator(object):
+    def __init__(self, trainD, trainE, trainP):
+        self.reset()
+        self.trainD=trainD
+        self.trainE=trainE
+        self.trainP=trainP
+
+    def reset(self):
+        self.images = []
+        self.labels = []
+        self.l=0
+        
+    def gene(self):
+        train_datagen = ImageDataGenerator(
+            featurewise_center=True, 
+            zca_whitening=True, 
+            vertical_flip=True,
+            horizontal_flip=True,
+            channel_shift_range=20,
+            brightness_range=[0.5, 1.0],         
+            rotation_range=180,
+            width_shift_range=0.1,
+            height_shift_range=0.1,
+            shear_range=0.1,
+            zoom_range=0.1,
+
+            fill_mode="constant",
+            cval=self.l )
+        return train_datagen
+
+
+    def flow_from_directory(self, batch_size=36):
+        # LabelEncode(classをint型に変換)するためのdict
+            # ディレクトリから画像のパスを取り出す
+        ans_file=[self.trainD, self.trainE, self.trainP]
+        
+        while(1>0):
+            #tはD,E,PÔのどのファイルにするか。kはファイル番号
+            t=random.randint(0,2)
+            k=random.randint(0,len(ans_file[t])-1)
+            
+            img=image.load_img(ans_file[t][k], target_size=(240, 320))
+            img=image.img_to_array(img)
+            self.l=np.mean(img)
+
+            train_datagen =self.gene()
+
+            img= img.reshape((1,) + img.shape)
+            img=train_datagen.flow(img, batch_size=1)[0]
+            
+            img=img.reshape(240,320,3)
+            
+            img=img/255
+
+            self.images.append(img)
+            if t==0:
+                self.labels.append([1,0,0])
+
+            if t==1:
+                self.labels.append([0,1,0])
+
+            if t==2:
+                self.labels.append([0,0,1])
+
+            # ここまでを繰り返し行い、batch_sizeの数だけ配列(self.iamges, self.labels)に格納
+            # batch_sizeの数だけ格納されたら、戻り値として返し、配列(self.iamges, self.labels)を空にする
+            if len(self.images) == batch_size:
+                inputs = np.array(self.images)
+                targets = np.array(self.labels)
+                self.reset()
+                yield inputs, targets
+                
+class ValidationGenerator(object):
+    def __init__(self, valD, valE, valP):
+        self.reset()
+        self.valD=valD
+        self.valE=valE
+        self.valP=valP
+
+    def reset(self):
+        self.images = []
+        self.labels = []
+        self.l=0
+    
+    def flow_from_directory(self, batch_size=36):
+        # LabelEncode(classをint型に変換)するためのdict
+            # ディレクトリから画像のパスを取り出す
+        while(1>0):
+            k=random.randint(0,2)
+            if k==0:
+                m=random.randint(0,len(self.valD)-1)
+                img=image.load_img(self.valD[m],target_size=(240,320,3))
+                img =image.img_to_array(img)
+                img=img/255
+                self.images.append(img)
+                self.labels.append([1,0,0])
+
+            if k==1:
+                m=random.randint(0,len(self.valE)-1)
+                img=image.load_img(self.valE[m],target_size=(240,320,3))
+                img=image.img_to_array(img)
+                img=img/255
+                self.images.append(img)
+                self.labels.append([0,1,0])
+
+            if k==2:
+                m=random.randint(0,len(self.valP)-1)
+                img=image.load_img(self.valP[m],target_size=(240,320,3))
+                img=image.img_to_array(img)
+                img=img/255
+                self.images.append(img)
+                self.labels.append([0,0,1])
+
+            # ここまでを繰り返し行い、batch_sizeの数だけ配列(self.iamges, self.labels)に格納
+            # batch_sizeの数だけ格納されたら、戻り値として返し、配列(self.iamges, self.labels)を空にする
+            if len(self.images) == batch_size:
+                inputs = np.array(self.images)
+                targets = np.array(self.labels)
+                self.reset()
+                yield inputs, targets
