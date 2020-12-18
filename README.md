@@ -10,7 +10,7 @@ Mouse Estrous Cycle Estimation
 - numpy 1.19.1
 - opencv-python 4.1.1
 - keras (tensorflow backend)== 2.2.4 (NOT 2.3)
-- tensorflow ==2.2.0
+- tensorflow 2.2.0
 
 ## Overview
 ![Overview](https://github.com/SanoKyohei/Secreit/blob/master/Example/Overview.png)  
