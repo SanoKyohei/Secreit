@@ -27,7 +27,7 @@ https://opac.ll.chiba-u.jp/da/curator/108041/weights.hdf5
 ## Dataset
 ### Example of file name
  "D_a_14_e1_Auto2_train.png" 
- <br> ①　D: Estrous Stage. When the estrous stage is intemediate class, we described it, for example, "D_E"
+ <br> ①　D: Estrous Stage. When the estrous stage is intermediate class, we described it using "_", such as "D_E".
  <br> ②　a_14_e1: image id
  <br> ③　Auto2: Name of Experiment. Auto2 and Auto3 was used for trainig. Auto1 was for validation and Auto4 is for test. 
 ### Dataset download
