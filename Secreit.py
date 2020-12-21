@@ -20,6 +20,8 @@ import random
 def softmax(x):
     exp_x = np.exp(x)
     y = exp_x / np.sum(np.exp(x), axis=1, keepdims=True)
+    ## nan is caused by inf
+    y[np.isnan(y)] = 1
     return y
 
 def vgg_model(weight_path, input_shape=(240,320,3), input_tensor=None, pooling=None,classes=3):
